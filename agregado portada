@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Tienda</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header img {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+    }
+
+    .cart {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      background-color: #ff4081;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-weight: bold;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    .producto {
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .producto select, .producto button {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Portada -->
+  <header>
+    <img src="imagenes/portada.jpg" alt="Imagen de portada" />
+  </header>
+
+  <!-- Carrito visible -->
+  <div class="cart">
+    🛒 <span id="cart-count">0</span>
+  </div>
+
+  <!-- Lista de productos -->
+  <div class="producto">
+    <div>
+      <strong>Producto 1</strong><br />
+      Precio: $100
+    </div>
+    <div>
+      <select id="cantidad1">
+        <option value="1">Pieza</option>
+        <option value="12">Caja (12 piezas)</option>
+      </select>
+      <button onclick="agregar(1)">Agregar</button>
+    </div>
+  </div>
+
+  <div class="producto">
+    <div>
+      <strong>Producto 2</strong><br />
+      Precio: $150
+    </div>
+    <div>
+      <select id="cantidad2">
+        <option value="1">Pieza</option>
+        <option value="12">Caja (12 piezas)</option>
+      </select>
+      <button onclick="agregar(2)">Agregar</button>
+    </div>
+  </div>
+
+  <!-- Script funcional -->
+  <script>
+    let cartCount = 0;
+
+    function addToCart(quantity) {
+      cartCount += quantity;
+      document.getElementById("cart-count").innerText = cartCount;
+      alert("Listo, agregaste al carrito");
+    }
+
+    function agregar(productoID) {
+      const select = document.getElementById("cantidad" + productoID);
+      const cantidad = parseInt(select.value);
+      addToCart(cantidad);
+    }
+  </script>
+
+</body>
+</html>
